@@ -20,7 +20,8 @@
                     "content": "<td style=\"background-color:gray\";>\r\n<div style='line-height:50px;'>\r\n<span style='font-size:16px;font-weight:bold'>Azure dashboard - Cost and Optimization</span></br>\r\n<span style='font-size:14px;font-weight:normal'>This dashboard provides an overview of orphaned resources.</span>\r\n<img style=\"float: right; width=\"120\" height=\"60\";\" src=\"https://github.githubassets.com/images/modules/open_graph/github-mark.png\">\r\n</div>\r\n</td>\r\n",
                     "title": "",
                     "subtitle": "",
-                    "markdownSource": 1
+                    "markdownSource": 1,
+                    "markdownUri": null
                   }
                 }
               }
@@ -42,7 +43,8 @@
                     "content": "<div style='line-height:50px;'>\n<span style='font-size:16px;font-weight:bold'>Orphaned Assets</span>\n<span>This section provides an overview of your orphaned assets.</span>\n</div>\n",
                     "title": "",
                     "subtitle": "",
-                    "markdownSource": 1
+                    "markdownSource": 1,
+                    "markdownUri": null
                   }
                 }
               }
@@ -346,7 +348,10 @@
                 }
               ],
               "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
-              "settings": {}
+              "settings": {},
+              "partHeader": {
+                "subtitle": "https://techcommunity.microsoft.com/t5/integrations-on-azure-blog/find-orphans-unused-web-api-connection-and-gateway-name-using/ba-p/2465200"
+              }
             }
           },
           "8": {
@@ -365,7 +370,8 @@
                     "content": "<div style='line-height:50px;'>\n<span style='font-size:16px;font-weight:bold'>Assets to evaluate</span>\n<span>This section provides an overview of your assets to evaluate, with possible to reduce costs.</span>\n</div>\n",
                     "title": "",
                     "subtitle": "",
-                    "markdownSource": 1
+                    "markdownSource": 1,
+                    "markdownUri": null
                   }
                 }
               }
@@ -417,7 +423,10 @@
                 }
               ],
               "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
-              "settings": {}
+              "settings": {},
+              "partHeader": {
+                "subtitle": "https://docs.microsoft.com/en-us/azure/virtual-machines/disks-reserved-capacity"
+              }
             }
           },
           "10": {
@@ -466,7 +475,10 @@
                 }
               ],
               "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
-              "settings": {}
+              "settings": {},
+              "partHeader": {
+                "subtitle": "https://docs.microsoft.com/en-us/azure/cost-management-billing/reservations/prepay-app-service"
+              }
             }
           },
           "11": {
@@ -516,7 +528,10 @@
                 }
               ],
               "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
-              "settings": {}
+              "settings": {},
+              "partHeader": {
+                "subtitle": "https://docs.microsoft.com/en-us/azure/app-service/overview-manage-costs#how-youre-charged-for-azure-app-service"
+              }
             }
           },
           "12": {
@@ -565,7 +580,10 @@
                 }
               ],
               "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
-              "settings": {}
+              "settings": {},
+              "partHeader": {
+                "subtitle": "https://docs.microsoft.com/en-us/azure/storage/common/storage-account-upgrade?tabs=azure-portal"
+              }
             }
           },
           "13": {
