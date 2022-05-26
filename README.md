@@ -1,5 +1,5 @@
 
-# Sample Dashboards
+# Random stuff
 
 This public repo with samples of dashboards, log queries, workbooks, and alerts, shared to help Azure community users. Feel free to make your changes.
 
