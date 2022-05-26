@@ -1,0 +1,667 @@
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 14,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "<td style=\"background-color:gray\";>\r\n<div style='line-height:50px;'>\r\n<span style='font-size:16px;font-weight:bold'>Azure dashboard - Cost and Optimization</span></br>\r\n<span style='font-size:14px;font-weight:normal'>This dashboard provides an overview of orphaned resources.</span>\r\n<img style=\"float: right; width=\"120\" height=\"60\";\" src=\"https://github.githubassets.com/images/modules/open_graph/github-mark.png\">\r\n</div>\r\n</td>\r\n",
+                    "title": "",
+                    "subtitle": "",
+                    "markdownSource": 1
+                  }
+                }
+              }
+            }
+          },
+          "1": {
+            "position": {
+              "x": 0,
+              "y": 2,
+              "colSpan": 14,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "<div style='line-height:50px;'>\n<span style='font-size:16px;font-weight:bold'>Orphaned Assets</span>\n<span>This section provides an overview of your orphaned assets.</span>\n</div>\n",
+                    "title": "",
+                    "subtitle": "",
+                    "markdownSource": 1
+                  }
+                }
+              }
+            }
+          },
+          "2": {
+            "position": {
+              "x": 0,
+              "y": 3,
+              "colSpan": 7,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Orphaned Disks",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "//DisksUnattached\r\nResources\r\n| where type has \"microsoft.compute/disks\"\r\n| extend diskState = tostring(properties.diskState)\r\n| where managedBy == \"\" and diskState != 'ActiveSAS'\r\nor diskState == 'Unattached' and diskState != 'ActiveSAS'\r\n| project id, diskState, resourceGroup, location, subscriptionId",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "value": "4cb395c5-0b29-4635-ad52-ce632845879d",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {},
+              "partHeader": {
+                "subtitle": "https://docs.microsoft.com/en-us/azure/virtual-machines/windows/find-unattached-disks"
+              }
+            }
+          },
+          "3": {
+            "position": {
+              "x": 7,
+              "y": 3,
+              "colSpan": 7,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Orphaned Network Interface Cards",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "//Orphaned Network Interface Cards\r\nResourceContainers  | where type =~ 'Microsoft.Resources/subscriptions' | extend SubscriptionName=name | join ( Resources | where type =~ 'microsoft.network/networkinterfaces' and isempty(properties.virtualMachine) and isnull(properties.privateEndpoint)\r\n    | extend id,  NICName=name, NICRG=resourceGroup, NICLocation=location, NICType=tostring(properties.nicType)) on subscriptionId\r\n        | order by id asc\r\n        | project NICName, NICRG, NICLocation, NICType, SubscriptionName",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "value": "93a42a7c-61f3-486d-8031-6a0771d7a3e3",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {},
+              "partHeader": {
+                "subtitle": "https://docs.microsoft.com/en-us/azure/virtual-machines/linux/find-unattached-nics"
+              }
+            }
+          },
+          "4": {
+            "position": {
+              "x": 0,
+              "y": 7,
+              "colSpan": 7,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Orphaned Availability Sets",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "//Orphaned Availability Sets\r\nResourceContainers | where type =~ 'Microsoft.Resources/subscriptions' | extend SubscriptionName=name | join ( resources | where type =~ 'Microsoft.Compute/availabilitySets' and tostring(properties.virtualMachines)=='[]' | extend id, ASName=name, ASRG=resourceGroup, ASLocation=location, FaultDomainCount=tostring(properties.platformFaultDomainCount), UpdateDomainCount= tostring(properties.platformUpdateDomainCount)) on subscriptionId\r\n    | order by id asc\r\n    | project ASName, ASRG, ASLocation, FaultDomainCount, UpdateDomainCount, SubscriptionName",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "value": "30ae6995-6baf-43c3-a70b-b33cb5e3cebe",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {}
+            }
+          },
+          "5": {
+            "position": {
+              "x": 7,
+              "y": 7,
+              "colSpan": 7,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Orphaned Public IPs",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "//UnattachedPublicIP\r\nResourceContainers | where type =~ 'Microsoft.Resources/subscriptions' | extend SubscriptionName=name | join (resources | where type =~ 'Microsoft.Network/publicIPAddresses' and isempty(properties.ipConfiguration) | extend id, IPName=name, AllocationMethod=tostring(properties.publicIPAllocationMethod), SKUName=sku.name, PIPRG=resourceGroup, Location=location)on subscriptionId \r\n        | order by id asc \r\n        | project IPName, SKUName, PIPRG, Location, AllocationMethod, SubscriptionName",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "value": "9cba04b1-13aa-44e7-95ee-082d0d139338",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {}
+            }
+          },
+          "6": {
+            "position": {
+              "x": 0,
+              "y": 11,
+              "colSpan": 7,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Orphaned Network Security Groups",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "//Orphaned Network Security Groups\r\nResourceContainers | where type =~ 'Microsoft.Resources/subscriptions' | extend SubscriptionName=name | join ( Resources | where type =~ 'microsoft.network/networksecuritygroups' and isnull(properties.networkInterfaces) and isnull(properties.subnets) | extend id, NSGName=name, NSGRG=resourceGroup, NSGLocation=location ) on subscriptionId\r\n    | order by id asc\r\n    | project NSGName, NSGRG, NSGLocation, SubscriptionName",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "value": "1b7dad5d-5867-4366-9b58-1134b15d8a84",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {}
+            }
+          },
+          "7": {
+            "position": {
+              "x": 7,
+              "y": 11,
+              "colSpan": 7,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Orphaned Web API connection and Gateway",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "//Orphaned Web API connection and Gateway\r\nresources\r\n| where type =~ 'Microsoft.Web/connections'\r\n| extend GatewayName=iff(isnotempty(todynamic(properties)[\"parameterValues\"]),todynamic(properties)[\"parameterValues\"][\"gateway\"][\"name\"] ,todynamic(properties)[\"parameterValueSet\"][\"values\"][\"gateway\"][\"value\"][\"name\"])\r\n|project API_id=id ,API_Name=name,GatewayName,API_resourceGroup=resourceGroup\r\n|join kind= leftouter\r\n(\r\nresources\r\n| where type == 'microsoft.logic/workflows'\r\n|extend propertiesJson=parse_json(properties)\r\n|extend ConJson=propertiesJson[\"parameters\"][\"$connections\"][\"value\"]\r\n|mvexpand Conn=ConJson\r\n|where   notnull(Conn)\r\n|extend connectionId=extract(\"\\\"connectionId\\\":\\\"(.*?)\\\"\",1,tostring(Conn))\r\n|project connectionId,LogicApp_id=id,LogicApp_resourceGroup=resourceGroup,LogicApp_Name=name\r\n)   on  $left.API_id==$right.connectionId\r\n|project API_Name ,API_resourceGroup,GatewayName,Used_in_LogicApp =iff(isnotempty(LogicApp_id), \"Yes\",\"No\")  ,LogicApp_resourceGroup,LogicApp_Name\r\n| order by Used_in_LogicApp asc",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "value": "1aae7296-771b-4cd5-aeac-c39abe94d680",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "value": true,
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {}
+            }
+          },
+          "8": {
+            "position": {
+              "x": 0,
+              "y": 15,
+              "colSpan": 14,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "<div style='line-height:50px;'>\n<span style='font-size:16px;font-weight:bold'>Assets to evaluate</span>\n<span>This section provides an overview of your assets to evaluate, with possible to reduce costs.</span>\n</div>\n",
+                    "title": "",
+                    "subtitle": "",
+                    "markdownSource": 1
+                  }
+                }
+              }
+            }
+          },
+          "9": {
+            "position": {
+              "x": 0,
+              "y": 16,
+              "colSpan": 7,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Azure Disks larger than P30",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "//Disk>=P30\r\nResources\r\n| where type =~ 'Microsoft.Compute/disks'\r\n| extend disksize = properties.diskSizeGB\r\n| where sku.name == 'Premium_LRS'\r\n| where disksize >= 1024\r\n| project location, resourceGroup, name, disksize\r\n| order by tostring(disksize)",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "value": "882f99d8-2297-4bab-a8d8-278a19f3be9b",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {}
+            }
+          },
+          "10": {
+            "position": {
+              "x": 7,
+              "y": 16,
+              "colSpan": 7,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "AppService PremiumV2 instances",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "//AppService PremiumV2 instances\r\nResourceContainers | where type =~ 'Microsoft.Resources/subscriptions'\r\n| extend SubscriptionName=name\r\n| join ( resources | where type =~ 'Microsoft.Web/sites'\r\n| extend WebAppId=id, WebAppRG=resourceGroup, WebAppName=name, AppServicePlan=tostring(properties.serverFarmId), SKU=tostring(properties.sku), Type=kind, Status=tostring(properties.state), WebAppLocation=location) on subscriptionId\r\n| where SKU == 'PremiumV2'\r\n| order by WebAppId asc",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "value": "2692c582-396a-4418-ab20-65ae9adef864",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {}
+            }
+          },
+          "11": {
+            "position": {
+              "x": 0,
+              "y": 20,
+              "colSpan": 14,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "App Services Status",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "//App Services Status\r\nResourceContainers | where type =~ 'Microsoft.Resources/subscriptions' \r\n    | extend SubscriptionName=name \r\n    | join \t( resources | where type =~ 'Microsoft.Web/sites' \r\n    | extend WebAppId=id, WebAppRG=resourceGroup, WebAppName=name, AppServicePlan=tostring(properties.serverFarmId), SKU=tostring(properties.sku), Type=kind, Status=tostring(properties.state), WebAppLocation=location) on subscriptionId\r\n    | order by WebAppId asc \r\n    //| where Status != 'Running'\r\n    | project WebAppName, Type, Status, WebAppLocation, AppServicePlan, WebAppRG,SubscriptionName",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "value": "329f7395-d082-4af9-8ad8-9e94a1bfcec2",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "value": true,
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {}
+            }
+          },
+          "12": {
+            "position": {
+              "x": 0,
+              "y": 24,
+              "colSpan": 14,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Storage Accounts (Kind and Replication), Key Vaults and Recovery Services Vault",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "//StorageReplication\r\nresources \r\n| where type =~ 'microsoft.storagesync/storagesyncservices'\r\n    or type =~ 'microsoft.recoveryservices/vaults'\r\n    or type =~ 'microsoft.storage/storageaccounts'\r\n    or type =~ 'microsoft.keyvault/vaults'\r\n| extend type = case(\r\n    type =~ 'microsoft.storagesync/storagesyncservices', 'Azure File Sync',\r\n    type =~ 'microsoft.recoveryservices/vaults', 'Azure Backup',\r\n    type =~ 'microsoft.storage/storageaccounts', 'Storage Accounts',\r\n    type =~ 'microsoft.keyvault/vaults', 'Key Vaults',\r\n    strcat(\"Not Translated: \", type))\r\n| extend Sku = case(\r\n    type !has 'Key Vaults', sku.name,\r\n    type =~ 'Key Vaults', properties.sku.name,\r\n    ' ')\r\n| extend Details = pack_all()\r\n| project Resource=id, type, kind, subscriptionId, resourceGroup, Sku //, Details",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "value": "d6b1c0be-14ed-4479-8365-df020b9f649f",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {}
+            }
+          },
+          "13": {
+            "position": {
+              "x": 0,
+              "y": 28,
+              "colSpan": 14,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Virtual Machine Power State",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "//Virtual Machine Power State\r\nResourceContainers | where type =~ 'Microsoft.Resources/subscriptions' | extend SubscriptionName=name | join ( resources | where type =~ 'microsoft.compute/virtualmachines' and tostring(properties.extended.instanceView.powerState.displayStatus) != 'VM deallocated' and tostring(properties.extended.instanceView.powerState.displayStatus) != 'VM running'| extend  VMname=name, PowerState=tostring(properties.extended.instanceView.powerState.displayStatus), VMLocation=location, VMRG=resourceGroup, VMID=id) on subscriptionId\r\n    | order by VMID asc \r\n    | project VMname, PowerState, VMLocation, VMRG, SubscriptionName",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "value": "22bf0708-1f34-4a7a-911e-3f4f14a72573",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {},
+              "partHeader": {
+                "title": "",
+                "subtitle": "https://docs.microsoft.com/en-us/azure/virtual-machines/states-billing"
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "model": {
+        "timeRange": {
+          "value": {
+            "relative": {
+              "duration": 24,
+              "timeUnit": 1
+            }
+          },
+          "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+        },
+        "filterLocale": {
+          "value": "en-us"
+        },
+        "filters": {
+          "value": {
+            "MsPortalFx_TimeRange": {
+              "model": {
+                "format": "utc",
+                "granularity": "auto",
+                "relative": "24h"
+              },
+              "displayCache": {
+                "name": "UTC Time",
+                "value": "Past 24 hours"
+              },
+              "filteredPartIds": []
+            }
+          }
+        }
+      }
+    }
+  },
+  "name": "Cost and Optimization",
+  "type": "Microsoft.Portal/dashboards",
+  "location": "INSERT LOCATION",
+  "tags": {
+    "hidden-title": "Cost and Optimization"
+  },
+  "apiVersion": "2015-08-01-preview"
+}
