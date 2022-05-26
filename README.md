@@ -1,7 +1,7 @@
 
 # Sample Dashboards
 
-This public repo of log queries, workbooks, and alerts, shared to help Azure community users.
+This public repo with samples of dashboards, log queries, workbooks, and alerts, shared to help Azure community users. Feel free to make your changes.
 
 
 **# Contributing**
