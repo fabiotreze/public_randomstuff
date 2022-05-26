@@ -17,7 +17,7 @@
               "settings": {
                 "content": {
                   "settings": {
-                    "content": "<td style=\"background-color:gray\";>\r\n<div style='line-height:50px;'>\r\n<span style='font-size:16px;font-weight:bold'>Azure dashboard - Cost and Optimization</span></br>\r\n<span style='font-size:14px;font-weight:normal'>This dashboard provides an overview of orphaned resources.</span>\r\n<img style=\"float: right; width=\"120\" height=\"60\";\" src=\"https://github.githubassets.com/images/modules/open_graph/github-mark.png\">\r\n</div>\r\n</td>\r\n",
+                    "content": "<td style=\"background-color:gray\";>\r\n<div style='line-height:50px;'>\r\n<span style='font-size:16px;font-weight:bold'>Azure dashboard - Cost and Optimization</span></br>\r\n<span style='font-size:14px;font-weight:normal'>This dashboard provides an overview of orphaned resources.</span>\r\n<img style=\"float: right; width=\"120\" height=\"60\";\" src=\"https://github.com/fabiotreze/public_randomstuff/blob/main/dashboards/GitHub-Mark-120px-plus.png\">\r\n</div>\r\n</td>\r\n",
                     "title": "",
                     "subtitle": "",
                     "markdownSource": 1
