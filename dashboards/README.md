@@ -1,10 +1,23 @@
-# **Cost and Optmization Dashboard**
+# **Cost and Optimization Dashboard**
 
 This dashboard can be used to help us to save money, identify orphaned assets, status running and if it reserved instance, if applicable.
 
 Microsoft recommend that we use a guide of **Microsoft Azure Well-Architected Framework**</br>
 https://docs.microsoft.com/en-us/azure/architecture/framework/cost/overview
 
-![[CostandOptimizationImage_Part1.png](https://github.com/fabiotreze/public_randomstuff/blob/main/dashboards/images/CostandOptimizationImage_Part1.png "CostandOptimizationImage_Part1.png")](./images/CostandOptimizationImage_Part1.png)
+## Change Log
+
+### 3.0.0
+
+Added query for AKS State and a new Azure Hybrid Benefit session.
+
+#### Added
+
+- Query for Azure Kubernetes Service Power State on Assets to Evaluate session
+- Azure Hybrid Benefits session
+
+## Dashboard overview
+
+![[CostandOptimizationImage_Part1.png](./images/CostandOptimizationImage_Part1.png "CostandOptimizationImage_Part1.png")](./images/CostandOptimizationImage_Part1.png)
 
 Thank you for your visit!
