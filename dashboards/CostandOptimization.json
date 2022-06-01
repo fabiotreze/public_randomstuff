@@ -31,6 +31,78 @@
             "position": {
               "x": 0,
               "y": 3,
+              "colSpan": 19,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "<div style='line-height:50px;'>\n<span style='font-size:16px;font-weight:bold'>Assets Overview</span>\n<span> - This section provides a resource count per location overview of your assets.</span>\n</div>\n",
+                    "title": "",
+                    "subtitle": "",
+                    "markdownSource": 1,
+                    "markdownUri": null
+                  }
+                }
+              }
+            }
+          },
+          "2": {
+            "position": {
+              "x": 0,
+              "y": 4,
+              "colSpan": 19,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Summarization by Resource Type, Count and Location",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "//Summarization by Resource Type, Count and Location\r\nresources\r\n| summarize count() by ['type'], location, subscriptionId\r\n| extend total=count_\r\n| order by location asc , total desc\r\n| project ResourceType=['type'], ResourceLocation=location, CountOfResources=total, subscriptionId\r\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "value": "9593eb19-5f69-4701-b9de-567e09bcc213",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {}
+            }
+          },
+          "3": {
+            "position": {
+              "x": 0,
+              "y": 8,
               "colSpan": 3,
               "rowSpan": 13
             },
@@ -50,10 +122,10 @@
               }
             }
           },
-          "2": {
+          "4": {
             "position": {
               "x": 3,
-              "y": 3,
+              "y": 8,
               "colSpan": 16,
               "rowSpan": 1
             },
@@ -73,10 +145,10 @@
               }
             }
           },
-          "3": {
+          "5": {
             "position": {
               "x": 3,
-              "y": 4,
+              "y": 9,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -125,10 +197,10 @@
               }
             }
           },
-          "4": {
+          "6": {
             "position": {
               "x": 11,
-              "y": 4,
+              "y": 9,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -174,10 +246,10 @@
               "settings": {}
             }
           },
-          "5": {
+          "7": {
             "position": {
               "x": 3,
-              "y": 8,
+              "y": 13,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -223,10 +295,10 @@
               "settings": {}
             }
           },
-          "6": {
+          "8": {
             "position": {
               "x": 11,
-              "y": 8,
+              "y": 13,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -272,10 +344,10 @@
               "settings": {}
             }
           },
-          "7": {
+          "9": {
             "position": {
               "x": 3,
-              "y": 12,
+              "y": 17,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -321,10 +393,10 @@
               "settings": {}
             }
           },
-          "8": {
+          "10": {
             "position": {
               "x": 11,
-              "y": 12,
+              "y": 17,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -373,10 +445,10 @@
               }
             }
           },
-          "9": {
+          "11": {
             "position": {
               "x": 0,
-              "y": 16,
+              "y": 21,
               "colSpan": 3,
               "rowSpan": 21
             },
@@ -396,10 +468,10 @@
               }
             }
           },
-          "10": {
+          "12": {
             "position": {
               "x": 3,
-              "y": 16,
+              "y": 21,
               "colSpan": 16,
               "rowSpan": 1
             },
@@ -419,10 +491,10 @@
               }
             }
           },
-          "11": {
+          "13": {
             "position": {
               "x": 3,
-              "y": 17,
+              "y": 22,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -471,10 +543,10 @@
               }
             }
           },
-          "12": {
+          "14": {
             "position": {
               "x": 11,
-              "y": 17,
+              "y": 22,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -523,10 +595,10 @@
               }
             }
           },
-          "13": {
+          "15": {
             "position": {
               "x": 3,
-              "y": 21,
+              "y": 26,
               "colSpan": 16,
               "rowSpan": 4
             },
@@ -575,10 +647,10 @@
               }
             }
           },
-          "14": {
+          "16": {
             "position": {
               "x": 3,
-              "y": 25,
+              "y": 30,
               "colSpan": 16,
               "rowSpan": 4
             },
@@ -624,10 +696,10 @@
               "settings": {}
             }
           },
-          "15": {
+          "17": {
             "position": {
               "x": 3,
-              "y": 29,
+              "y": 34,
               "colSpan": 16,
               "rowSpan": 4
             },
@@ -676,10 +748,10 @@
               }
             }
           },
-          "16": {
+          "18": {
             "position": {
               "x": 3,
-              "y": 33,
+              "y": 38,
               "colSpan": 16,
               "rowSpan": 4
             },
@@ -728,10 +800,10 @@
               }
             }
           },
-          "17": {
+          "19": {
             "position": {
               "x": 0,
-              "y": 37,
+              "y": 42,
               "colSpan": 3,
               "rowSpan": 14
             },
@@ -751,10 +823,10 @@
               }
             }
           },
-          "18": {
+          "20": {
             "position": {
               "x": 3,
-              "y": 37,
+              "y": 42,
               "colSpan": 16,
               "rowSpan": 1
             },
@@ -774,10 +846,10 @@
               }
             }
           },
-          "19": {
+          "21": {
             "position": {
               "x": 3,
-              "y": 38,
+              "y": 43,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -823,10 +895,10 @@
               "settings": {}
             }
           },
-          "20": {
+          "22": {
             "position": {
               "x": 11,
-              "y": 38,
+              "y": 43,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -872,10 +944,10 @@
               "settings": {}
             }
           },
-          "21": {
+          "23": {
             "position": {
               "x": 3,
-              "y": 42,
+              "y": 47,
               "colSpan": 16,
               "rowSpan": 1
             },
@@ -895,10 +967,10 @@
               }
             }
           },
-          "22": {
+          "24": {
             "position": {
               "x": 3,
-              "y": 43,
+              "y": 48,
               "colSpan": 16,
               "rowSpan": 4
             },
@@ -947,10 +1019,10 @@
               }
             }
           },
-          "23": {
+          "25": {
             "position": {
               "x": 3,
-              "y": 47,
+              "y": 52,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -999,10 +1071,10 @@
               }
             }
           },
-          "24": {
+          "26": {
             "position": {
               "x": 11,
-              "y": 47,
+              "y": 52,
               "colSpan": 8,
               "rowSpan": 4
             },
