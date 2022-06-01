@@ -14,6 +14,7 @@ Added query for AKS State and a new Azure Hybrid Benefit session.
 #### Added
 
 - Query for Azure Kubernetes Service Power State on **Assets to Evaluate** session
+- **Assets Overview** session
 - **Azure Hybrid Benefits** session
 
 ## Dashboard overview
