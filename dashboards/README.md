@@ -6,3 +6,5 @@ Microsoft recommend that we use a guide of **Microsoft Azure Well-Architected Fr
 https://docs.microsoft.com/en-us/azure/architecture/framework/cost/overview
 
 ![[CostandOptimizationImage_Part1.png](https://github.com/fabiotreze/public_randomstuff/blob/main/dashboards/images/CostandOptimizationImage_Part1.png "CostandOptimizationImage_Part1.png")](./images/CostandOptimizationImage_Part1.png)
+
+Thank you for your visit!
