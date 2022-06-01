@@ -7,7 +7,7 @@ https://docs.microsoft.com/en-us/azure/architecture/framework/cost/overview
 
 ## Change Log
 
-### 3.0.0
+### 3.0.0 - 01/06/2022
 
 Added query for AKS State and a new Azure Hybrid Benefit session.
 
