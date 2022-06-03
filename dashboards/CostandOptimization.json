@@ -1079,7 +1079,7 @@
               "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
               "settings": {},
               "partHeader": {
-                "subtitle": "https://docs.microsoft.com/en-us/azure/azure-sql/database/reserved-capacity-overview"
+                "subtitle": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.sql.models.database.licensetype?view=azure-dotnet"
               }
             }
           },
