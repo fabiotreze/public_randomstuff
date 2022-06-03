@@ -892,7 +892,10 @@
                 }
               ],
               "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
-              "settings": {}
+              "settings": {},
+              "partHeader": {
+                "subtitle": "https://azure.microsoft.com/en-us/pricing/hybrid-benefit/"
+              }
             }
           },
           "22": {
