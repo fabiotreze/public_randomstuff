@@ -161,7 +161,7 @@
                 },
                 {
                   "name": "query",
-                  "value": "//Orphaned Disks\r\nResources\r\n| where type has \"microsoft.compute/disks\"\r\n| extend Diskid=id, DiskState = tostring(properties.diskState), DiskresourceGroup=resourceGroup, DiskLocation=location\r\n| order by Diskid asc\r\n| where managedBy == \"\" and DiskState != 'ActiveSAS' or DiskState == 'Unattached' and DiskState != 'ActiveSAS'\r\n| project Diskid, DiskState, DiskresourceGroup, DiskLocation, subscriptionId",
+                  "value": "//Orphaned Disks\r\nResources\r\n| where type has \"microsoft.compute/disks\"\r\n| extend Diskid=id, DiskState = tostring(properties.diskState), DiskresourceGroup=resourceGroup, DiskLocation=location, Diskname=name\r\n| order by Diskid asc\r\n| where managedBy == \"\" and DiskState != 'ActiveSAS' or DiskState == 'Unattached' and DiskState != 'ActiveSAS'\r\n| project Diskname, Diskid, DiskState, DiskresourceGroup, DiskLocation, subscriptionId",
                   "isOptional": true
                 },
                 {
