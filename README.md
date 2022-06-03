@@ -17,3 +17,15 @@ provided by the bot. You will only need to do this once across all repos using o
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+
+**# Disclaimer**
+
+This repository is not a Microsoft service or product. This is a personal driven project, there are no implicit or explicit obligations by any company or government related to this project, it is provided 'as is' with no warranties and legal no rights.
+
+
+**# Author**
+
+Fabio Rodrigues Vieira Costa
+
+Feel free to contact me directly in e-mail: fabiotreze@hotmail.com
