@@ -539,7 +539,7 @@
               "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
               "settings": {},
               "partHeader": {
-                "subtitle": "https://docs.microsoft.com/en-us/azure/cost-management-billing/reservations/understand-disk-reservations"
+                "subtitle": "https://docs.microsoft.com/en-us/azure/virtual-machines/disks-reserved-capacity"
               }
             }
           },
@@ -591,7 +591,7 @@
               "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
               "settings": {},
               "partHeader": {
-                "subtitle": "https://docs.microsoft.com/en-us/azure/cost-management-billing/reservations/prepay-app-service"
+                "subtitle": "https://docs.microsoft.com/en-us/azure/architecture/framework/services/compute/azure-app-service/cost-optimization"
               }
             }
           },
@@ -611,7 +611,7 @@
                 },
                 {
                   "name": "query",
-                  "value": "//App Services Status\r\nResourceContainers | where type =~ 'Microsoft.Resources/subscriptions'\r\n| extend SubscriptionName=name\r\n| join ( resources | where type =~ 'Microsoft.Web/sites'\r\n| extend WebAppId=id, WebAppresourceGroup=resourceGroup, WebAppName=name, WebAppServicePlan=tostring(properties.serverFarmId), WebAppSKU=tostring(properties.sku), WebAppType=kind, WebAppStatus=tostring(properties.state), WebAppLocation=location) on subscriptionId\r\n| where WebAppSKU == 'PremiumV2'\r\n| order by WebAppStatus desc  \r\n| project WebAppName, WebAppStatus, WebAppSKU, WebAppresourceGroup, WebAppLocation, WebAppType, subscriptionId",
+                  "value": "//App Services Status\r\nResourceContainers | where type =~ 'Microsoft.Resources/subscriptions'\r\n| extend SubscriptionName=name\r\n| join ( resources | where type =~ 'Microsoft.Web/sites'\r\n| extend WebAppId=id, WebAppresourceGroup=resourceGroup, WebAppName=name, WebAppServicePlan=tostring(properties.serverFarmId), WebAppSKU=tostring(properties.sku), WebAppType=kind, WebAppStatus=tostring(properties.state), WebAppLocation=location) on subscriptionId\r\n| order by WebAppStatus desc  \r\n| project WebAppName, WebAppStatus, WebAppSKU, WebAppresourceGroup, WebAppLocation, WebAppType, subscriptionId",
                   "isOptional": true
                 },
                 {
@@ -643,7 +643,7 @@
               "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
               "settings": {},
               "partHeader": {
-                "subtitle": "https://docs.microsoft.com/en-us/azure/app-service/overview-manage-costs#how-youre-charged-for-azure-app-service"
+                "subtitle": "https://docs.microsoft.com/en-us/azure/architecture/framework/services/compute/azure-app-service/cost-optimization"
               }
             }
           },
@@ -906,12 +906,12 @@
               "inputs": [
                 {
                   "name": "partTitle",
-                  "value": "Linux VMs without Azure Hybrid Benefit enabled",
+                  "value": "Linux VMs without Azure Hybrid Benefit enabled, applicable for RedHat and Suse only",
                   "isOptional": true
                 },
                 {
                   "name": "query",
-                  "value": "//Linux VMs without Azure Hybrid Benefit enabled\r\nResourceContainers | where type =~ 'Microsoft.Resources/subscriptions' | extend SubscriptionName=name | join ( resources | where type =~ 'microsoft.compute/virtualmachines' and  tostring(properties.storageProfile.osDisk.osType) != 'Windows' and tostring(properties.['licenseType']) has 'SLES_BYOS' | extend WindowsId=id, VMName=name, VMLocation=location, VMRG=resourceGroup, OSType=tostring(properties.storageProfile.imageReference.offer), OsVersion = tostring(properties.storageProfile.imageReference.sku), VMSize=tostring (properties.hardwareProfile.vmSize), LicenseType = tostring(properties.['licenseType'])) on subscriptionId \r\n    | order by WindowsId asc \r\n    | project VMName,VMRG, VMLocation,OSType, OsVersion,LicenseType, VMSize, SubscriptionName",
+                  "value": "//Linux VMs without Azure Hybrid Benefit enabled, applicable for RedHat and Suse only\r\nResourceContainers | where type =~ 'Microsoft.Resources/subscriptions' \r\n| extend SubscriptionName=name \r\n| join ( resources | where type =~ 'microsoft.compute/virtualmachines' and  tostring(properties.storageProfile.osDisk.osType) != 'Windows' and tostring(properties.['licenseType']) !contains '_BYOS' \r\n| extend LinuxId=id, VMName=name, VMLocation=location, VMRG=resourceGroup, OSType=tostring(properties.storageProfile.imageReference.offer), OsVersion = tostring(properties.storageProfile.imageReference.sku), VMSize=tostring (properties.hardwareProfile.vmSize), LicenseType = tostring(properties.['licenseType'])) on subscriptionId \r\n    | order by LinuxId=id asc, OSType asc \r\n    | project VMName,VMRG, VMLocation,OSType, OsVersion,LicenseType, VMSize, SubscriptionName",
                   "isOptional": true
                 },
                 {
@@ -924,7 +924,7 @@
                 },
                 {
                   "name": "queryId",
-                  "value": "26805e0e-f3b9-4076-a468-1ce3ffa1b121",
+                  "value": "ed44299e-6b70-4898-8032-ce2334ebfab3",
                   "isOptional": true
                 },
                 {
@@ -941,7 +941,10 @@
                 }
               ],
               "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
-              "settings": {}
+              "settings": {},
+              "partHeader": {
+                "subtitle": "https://docs.microsoft.com/en-us/azure/virtual-machines/linux/prepay-suse-software-charges"
+              }
             }
           },
           "23": {
@@ -1067,7 +1070,7 @@
               "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
               "settings": {},
               "partHeader": {
-                "subtitle": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.sql.models.database.licensetype?view=azure-dotnet"
+                "subtitle": "https://docs.microsoft.com/en-us/azure/azure-sql/database/reserved-capacity-overview"
               }
             }
           },
@@ -1119,7 +1122,7 @@
               "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
               "settings": {},
               "partHeader": {
-                "subtitle": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.sql.models.database.licensetype?view=azure-dotnet"
+                "subtitle": "https://docs.microsoft.com/en-us/azure/azure-sql/database/reserved-capacity-overview"
               }
             }
           }
