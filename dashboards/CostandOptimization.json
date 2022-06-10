@@ -1099,7 +1099,7 @@
                 },
                 {
                   "name": "query",
-                  "value": "//Azure SQL Managed Instances without Azure Hybrid Benefit\r\nResourceContainers \r\n| where type =~ 'Microsoft.Resources/subscriptions' \r\n| extend SubscriptionName=name | join (resources |  where type =~ 'Microsoft.Sql/managedInstances' and tostring(properties.['licenseType']) == 'LicenseIncluded' \r\n| extend SQLDBid=id, SQLDBManagedInstance=id, SQLDBresourceGroup=resourceGroup, SQLDBLocation=location, SQLDBLicenseType = tostring(properties.['licenseType'])) on subscriptionId \r\n    | order by SQLDBid asc\r\n    | project SQLDBManagedInstance,SQLDBresourceGroup, SQLDBLocation, SQLDBLicenseType, subscriptionId",
+                  "value": "//Azure SQL Managed Instances without Azure Hybrid Benefit\r\nResourceContainers \r\n| where type =~ 'Microsoft.Resources/subscriptions' \r\n| extend SubscriptionName=name | join (resources |  where type =~ 'Microsoft.Sql/managedInstances' and tostring(properties.['licenseType']) == 'LicenseIncluded' \r\n| extend SQLDBName=name,SQLDBid=id, SQLDBManagedInstance=id, SQLDBresourceGroup=resourceGroup, SQLDBLocation=location, SQLDBLicenseType = tostring(properties.['licenseType'])) on subscriptionId \r\n    | order by SQLDBName asc\r\n    | project SQLDBName,SQLDBManagedInstance,SQLDBresourceGroup, SQLDBLocation, SQLDBLicenseType, subscriptionId",
                   "isOptional": true
                 },
                 {
