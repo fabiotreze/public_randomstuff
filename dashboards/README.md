@@ -7,6 +7,11 @@ https://docs.microsoft.com/en-us/azure/architecture/framework/cost/overview
 
 ## Change Log
 
+### 4.1.0 - 06/10/2022
+- Added SQLDBName in Azure SQL Managed Instances without Azure Hybrid Benefit.
+#### Added
+- Added SQLDBName field
+
 ### 4.0.0 - 06/03/2022
 - Added new subjects links.
 #### Fixed
