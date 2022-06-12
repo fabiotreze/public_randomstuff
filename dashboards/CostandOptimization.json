@@ -104,7 +104,7 @@
               "x": 0,
               "y": 8,
               "colSpan": 3,
-              "rowSpan": 13
+              "rowSpan": 17
             },
             "metadata": {
               "inputs": [],
@@ -450,8 +450,57 @@
           },
           "11": {
             "position": {
-              "x": 0,
+              "x": 3,
               "y": 21,
+              "colSpan": 16,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Orphaned Route Tables",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "resources\r\n| where type == \"microsoft.network/routetables\"\r\n| where isnull(properties.subnets)\r\n| extend RTName=name, RTresourceGroup=resourceGroup, RTLocation=location\r\n| project RTName, RTresourceGroup, RTLocation, subscriptionId",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "value": "68998d54-81b9-4af7-b08a-227185a0fed7",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {}
+            }
+          },
+          "12": {
+            "position": {
+              "x": 0,
+              "y": 25,
               "colSpan": 3,
               "rowSpan": 21
             },
@@ -471,10 +520,10 @@
               }
             }
           },
-          "12": {
+          "13": {
             "position": {
               "x": 3,
-              "y": 21,
+              "y": 25,
               "colSpan": 16,
               "rowSpan": 1
             },
@@ -494,10 +543,10 @@
               }
             }
           },
-          "13": {
+          "14": {
             "position": {
               "x": 3,
-              "y": 22,
+              "y": 26,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -546,10 +595,10 @@
               }
             }
           },
-          "14": {
+          "15": {
             "position": {
               "x": 11,
-              "y": 22,
+              "y": 26,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -598,10 +647,10 @@
               }
             }
           },
-          "15": {
+          "16": {
             "position": {
               "x": 3,
-              "y": 26,
+              "y": 30,
               "colSpan": 16,
               "rowSpan": 4
             },
@@ -650,10 +699,10 @@
               }
             }
           },
-          "16": {
+          "17": {
             "position": {
               "x": 3,
-              "y": 30,
+              "y": 34,
               "colSpan": 16,
               "rowSpan": 4
             },
@@ -702,10 +751,10 @@
               }
             }
           },
-          "17": {
+          "18": {
             "position": {
               "x": 3,
-              "y": 34,
+              "y": 38,
               "colSpan": 16,
               "rowSpan": 4
             },
@@ -754,10 +803,10 @@
               }
             }
           },
-          "18": {
+          "19": {
             "position": {
               "x": 3,
-              "y": 38,
+              "y": 42,
               "colSpan": 16,
               "rowSpan": 4
             },
@@ -806,10 +855,10 @@
               }
             }
           },
-          "19": {
+          "20": {
             "position": {
               "x": 0,
-              "y": 42,
+              "y": 46,
               "colSpan": 3,
               "rowSpan": 14
             },
@@ -829,10 +878,10 @@
               }
             }
           },
-          "20": {
+          "21": {
             "position": {
               "x": 3,
-              "y": 42,
+              "y": 46,
               "colSpan": 16,
               "rowSpan": 1
             },
@@ -852,10 +901,10 @@
               }
             }
           },
-          "21": {
+          "22": {
             "position": {
               "x": 3,
-              "y": 43,
+              "y": 47,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -904,10 +953,10 @@
               }
             }
           },
-          "22": {
+          "23": {
             "position": {
               "x": 11,
-              "y": 43,
+              "y": 47,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -956,10 +1005,10 @@
               }
             }
           },
-          "23": {
+          "24": {
             "position": {
               "x": 3,
-              "y": 47,
+              "y": 51,
               "colSpan": 16,
               "rowSpan": 1
             },
@@ -979,10 +1028,10 @@
               }
             }
           },
-          "24": {
+          "25": {
             "position": {
               "x": 3,
-              "y": 48,
+              "y": 52,
               "colSpan": 16,
               "rowSpan": 4
             },
@@ -1031,10 +1080,10 @@
               }
             }
           },
-          "25": {
+          "26": {
             "position": {
               "x": 3,
-              "y": 52,
+              "y": 56,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -1083,10 +1132,10 @@
               }
             }
           },
-          "26": {
+          "27": {
             "position": {
               "x": 11,
-              "y": 52,
+              "y": 56,
               "colSpan": 8,
               "rowSpan": 4
             },
