@@ -7,6 +7,11 @@ https://docs.microsoft.com/en-us/azure/architecture/framework/cost/overview
 
 ## Change Log
 
+### 4.2.0 - 06/12/2022
+- Added in Orphaned Assets the Route Table query.
+#### Added
+- Added Route Table query
+
 ### 4.1.0 - 06/10/2022
 - Added SQLDBName in Azure SQL Managed Instances without Azure Hybrid Benefit.
 #### Added
