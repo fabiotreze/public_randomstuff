@@ -502,7 +502,7 @@
               "x": 0,
               "y": 25,
               "colSpan": 3,
-              "rowSpan": 21
+              "rowSpan": 17
             },
             "metadata": {
               "inputs": [],
@@ -715,7 +715,7 @@
                 },
                 {
                   "name": "query",
-                  "value": "//Virtual Machine Power State - Stopped\r\nResourceContainers | where type =~ 'Microsoft.Resources/subscriptions' | extend SubscriptionName=name | join ( resources | where type =~ 'microsoft.compute/virtualmachines' and tostring(properties.extended.instanceView.powerState.displayStatus) != 'VM deallocated' and tostring(properties.extended.instanceView.powerState.displayStatus) != 'VM running'| extend  VMname=name, VMPowerState=tostring(properties.extended.instanceView.powerState.displayStatus), VMLocation=location, VMresourceGroup=resourceGroup, VMID=id) on subscriptionId\r\n    | order by VMID asc \r\n    | project VMname, VMPowerState, VMLocation, VMresourceGroup, subscriptionId",
+                  "value": "//Virtual Machine Power State - Stopped\r\nResourceContainers | where type =~ 'Microsoft.Resources/subscriptions' | extend SubscriptionName=name | join ( resources | where type =~ 'microsoft.compute/virtualmachines' and tostring(properties.extended.instanceView.powerState.displayStatus) != 'VM deallocated' and tostring(properties.extended.instanceView.powerState.displayStatus) != 'VM running'| extend  VMname=name, VMPowerState=tostring(properties.extended.instanceView.powerState.displayStatus), VMLocation=location, VMRG=resourceGroup, VMID=id) on subscriptionId\r\n    | order by VMID asc \r\n    | project VMname, VMPowerState, VMLocation, VMRG, subscriptionId",
                   "isOptional": true
                 },
                 {
@@ -755,58 +755,6 @@
             "position": {
               "x": 3,
               "y": 38,
-              "colSpan": 16,
-              "rowSpan": 4
-            },
-            "metadata": {
-              "inputs": [
-                {
-                  "name": "partTitle",
-                  "value": "Virtual Machine Power State - Stopped",
-                  "isOptional": true
-                },
-                {
-                  "name": "query",
-                  "value": "//Virtual Machine Power State - Stopped\r\nResourceContainers | where type =~ 'Microsoft.Resources/subscriptions' | extend SubscriptionName=name | join ( resources | where type =~ 'microsoft.compute/virtualmachines' and tostring(properties.extended.instanceView.powerState.displayStatus) != 'VM deallocated' and tostring(properties.extended.instanceView.powerState.displayStatus) != 'VM running'| extend  VMname=name, VMPowerState=tostring(properties.extended.instanceView.powerState.displayStatus), VMLocation=location, VMRG=resourceGroup, VMID=id) on subscriptionId\r\n    | order by VMID asc \r\n    | project VMname, VMPowerState, VMLocation, VMRG, subscriptionId",
-                  "isOptional": true
-                },
-                {
-                  "name": "chartType",
-                  "isOptional": true
-                },
-                {
-                  "name": "isShared",
-                  "isOptional": true
-                },
-                {
-                  "name": "queryId",
-                  "value": "1c9f6b39-c386-4cb9-ad79-6e4242dc4745",
-                  "isOptional": true
-                },
-                {
-                  "name": "formatResults",
-                  "isOptional": true
-                },
-                {
-                  "name": "queryScope",
-                  "value": {
-                    "scope": 0,
-                    "values": []
-                  },
-                  "isOptional": true
-                }
-              ],
-              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
-              "settings": {},
-              "partHeader": {
-                "subtitle": "https://docs.microsoft.com/en-us/azure/virtual-machines/states-billing"
-              }
-            }
-          },
-          "19": {
-            "position": {
-              "x": 3,
-              "y": 42,
               "colSpan": 16,
               "rowSpan": 4
             },
@@ -855,10 +803,10 @@
               }
             }
           },
-          "20": {
+          "19": {
             "position": {
               "x": 0,
-              "y": 46,
+              "y": 42,
               "colSpan": 3,
               "rowSpan": 14
             },
@@ -878,10 +826,10 @@
               }
             }
           },
-          "21": {
+          "20": {
             "position": {
               "x": 3,
-              "y": 46,
+              "y": 42,
               "colSpan": 16,
               "rowSpan": 1
             },
@@ -901,10 +849,10 @@
               }
             }
           },
-          "22": {
+          "21": {
             "position": {
               "x": 3,
-              "y": 47,
+              "y": 43,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -953,10 +901,10 @@
               }
             }
           },
-          "23": {
+          "22": {
             "position": {
               "x": 11,
-              "y": 47,
+              "y": 43,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -1005,10 +953,10 @@
               }
             }
           },
-          "24": {
+          "23": {
             "position": {
               "x": 3,
-              "y": 51,
+              "y": 47,
               "colSpan": 16,
               "rowSpan": 1
             },
@@ -1028,10 +976,10 @@
               }
             }
           },
-          "25": {
+          "24": {
             "position": {
               "x": 3,
-              "y": 52,
+              "y": 48,
               "colSpan": 16,
               "rowSpan": 4
             },
@@ -1080,10 +1028,10 @@
               }
             }
           },
-          "26": {
+          "25": {
             "position": {
               "x": 3,
-              "y": 56,
+              "y": 52,
               "colSpan": 8,
               "rowSpan": 4
             },
@@ -1132,10 +1080,10 @@
               }
             }
           },
-          "27": {
+          "26": {
             "position": {
               "x": 11,
-              "y": 56,
+              "y": 52,
               "colSpan": 8,
               "rowSpan": 4
             },
