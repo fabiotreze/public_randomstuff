@@ -966,7 +966,7 @@
                 },
                 {
                   "name": "query",
-                  "value": "//Linux VMs without Azure Hybrid Benefit enabled, applicable for RedHat and Suse only\r\nResourceContainers | where type =~ 'Microsoft.Resources/subscriptions' \r\n| extend SubscriptionName=name \r\n| join ( resources | where type =~ 'microsoft.compute/virtualmachines' and  tostring(properties.storageProfile.osDisk.osType) != 'Windows' and tostring(properties.['licenseType']) !contains '_BYOS' \r\n| extend LinuxId=id, VMName=name, VMLocation=location, VMRG=resourceGroup, OSType=tostring(properties.storageProfile.imageReference.offer), OsVersion = tostring(properties.storageProfile.imageReference.sku), VMSize=tostring (properties.hardwareProfile.vmSize), LicenseType = tostring(properties.['licenseType'])) on subscriptionId \r\n    | order by LinuxId=id asc, OSType asc \r\n    | project VMName,VMRG, VMLocation,OSType, OsVersion,LicenseType, VMSize, subscriptionId",
+                  "value": "//Linux VMs without Azure Hybrid Benefit enabled, applicable for RedHat and Suse only\r\nResourceContainers | where type =~ 'Microsoft.Resources/subscriptions' | extend SubscriptionName=name | join ( resources \r\n| where type =~ 'microsoft.compute/virtualmachines' and (properties.storageProfile.imageReference.publisher == 'suse' or properties.storageProfile.imageReference.publisher=='RedHat')\r\n| where tostring(properties.['licenseType']) != 'SLES_BYOS' and tostring(properties.['licenseType']) != 'RHEL_BYOS' \r\n| extend linuxId=id, VMName=name, VMLocation=location, VMRG=resourceGroup, OSType=tostring(properties.storageProfile.imageReference.offer), OsVersion = tostring(properties.storageProfile.imageReference.sku), VMSize=tostring (properties.hardwareProfile.vmSize), LicenseType = tostring(properties.['licenseType']) \r\n| order by VMSize asc ) on subscriptionId \r\n| project VMName,VMRG, VMLocation,OSType, OsVersion,LicenseType, VMSize, subscriptionId",
                   "isOptional": true
                 },
                 {
@@ -996,10 +996,7 @@
                 }
               ],
               "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
-              "settings": {},
-              "partHeader": {
-                "subtitle": "https://docs.microsoft.com/en-us/azure/virtual-machines/linux/prepay-suse-software-charges"
-              }
+              "settings": {}
             }
           },
           "24": {
