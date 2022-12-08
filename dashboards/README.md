@@ -7,6 +7,10 @@ https://docs.microsoft.com/en-us/azure/architecture/framework/cost/overview
 
 ## Change Log
 
+### 4.2.1 - 12/08/2022
+#### Fixed
+- Query for Linux VMs without Azure Hybrid Benefit enabled, applicable for RedHat and Suse only
+
 ### 4.2.0 - 06/12/2022
 - Added in Orphaned Assets the Route Table query.
 #### Added
