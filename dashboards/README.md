@@ -41,4 +41,4 @@ https://docs.microsoft.com/en-us/azure/architecture/framework/cost/overview
 
 ![[CostandOptimizationImage_Part1.png](./images/CostandOptimizationImage_Part1.png "CostandOptimizationImage_Part1.png")](./images/CostandOptimizationImage_Part1.png)
 
-Thank you for your visit!
+Your visit is much appreciated – thank you!
