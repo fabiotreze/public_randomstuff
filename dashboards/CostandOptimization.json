@@ -1,3 +1,4 @@
+```json
 {
   "properties": {
     "lenses": {
@@ -1222,3 +1223,4 @@
   },
   "apiVersion": "2015-08-01-preview"
 }
+```
